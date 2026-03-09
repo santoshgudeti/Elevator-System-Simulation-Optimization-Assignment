@@ -5,8 +5,8 @@
   "scripts": {
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
-    "build": "cd frontend && npm install && npm run build",
+    "install:all": "npm install --legacy-peer-deps && cd backend && npm install --legacy-peer-deps && cd ../frontend && npm install --legacy-peer-deps",
+    "build": "cd frontend && npm install --legacy-peer-deps && npm run build",
     "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
   },
   "devDependencies": {
