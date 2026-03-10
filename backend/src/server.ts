@@ -73,6 +73,9 @@ function generateTraffic() {
 io.on('connection', (socket) => {
     console.log('Frontend connected:', socket.id);
 
+    // Send immediate state so the frontend doesn't hang waiting for 'start'
+    runSimulation();
+
     socket.on("config", (data: { numElevators: number, numFloors: number, requestFrequency: number }) => {
         engine = new SimulationEngine(data.numElevators, data.numFloors);
         requestFrequency = data.requestFrequency || 5;

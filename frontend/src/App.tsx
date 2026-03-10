@@ -36,7 +36,9 @@ interface SystemState {
 }
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
-const socket: Socket = io(BACKEND_URL);
+const socket: Socket = io(BACKEND_URL, {
+    transports: ['websocket', 'polling'] // Try WebSocket first to skip slow HTTP polling
+});
 
 function App() {
     const [state, setState] = useState<SystemState | null>(null);
