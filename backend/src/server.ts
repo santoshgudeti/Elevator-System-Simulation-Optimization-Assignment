@@ -3,8 +3,10 @@ import http from 'http';
 import { Server } from 'socket.io';
 import { SimulationEngine } from './models/SimulationEngine';
 import { PassengerRequest } from './models/Request';
+import cors from 'cors';
 
 const app = express();
+app.use(cors({ origin: '*' })); // Allow all origins for the Express layer
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
